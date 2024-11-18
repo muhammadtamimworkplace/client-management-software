@@ -5,18 +5,25 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Nav from './Home/Nav/Nav.jsx';
+import Main from './Home/Main/Main.jsx';
+import Hooks from './hooks/Hooks.jsx';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Nav></Nav>,
+    element: <Main />,
+    children: [
+      {
+        path: "/",
+        element: <Hooks />,
+      },
+    ],
   },
 ]);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-       <RouterProvider router={router} />
+    <RouterProvider router={router} />
   </StrictMode>,
 )
