@@ -5,20 +5,7 @@ const BrokerData = ({ broker, NameSearch, AreaSearch }) => {
     const BrokerArea = broker.Area_Name;
     const BrokerID = broker.ID;
     const Picture_URL = broker.Picture_URL;
-
-    // console.log(brokerDatas);
-
-    // console.log(BrokerName, BrokerArea);
-
-
-    // const filteredBrokers = [broker].filter(Broker =>
-    //     Broker.Name.toLowerCase().includes(NameSearch.toLowerCase()) &&
-    //     Broker.Area.toLowerCase().includes(AreaSearch.toLowerCase())
-    // );
-
-    // console.log(BrokerName, NameSearch, AreaSearch);
-
-
+    const phone = broker.Phone;
 
     return (
         <div className="card glass w-full">
@@ -33,7 +20,9 @@ const BrokerData = ({ broker, NameSearch, AreaSearch }) => {
                     <h2 className="card-title col-span-10">{BrokerName}</h2>
                     <p className='col-span-2'>ID: {BrokerID}</p>
                 </div>
-                <div className="card-actions justify-end">
+                <span>Area : {BrokerArea}</span>
+                <span>Phone : {phone}</span>
+                <div className="card-actions  justify-center">
                     <button className="btn btn-primary">More info</button>
                 </div>
             </div>

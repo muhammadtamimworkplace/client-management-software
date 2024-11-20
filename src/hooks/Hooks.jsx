@@ -1,40 +1,46 @@
-import React, { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import BrokerData from '../Home/BrokerData';
 
 const Hooks = ({ AreaSearch, NameSearch }) => {
-    // console.log(props);
-
     const [brokers, setBroker] = useState([]);
+    const [filterData, setFilterData] = useState([]); // Store filtered data
 
     useEffect(() => {
         fetch('/public/assets/data.json')
             .then(res => res.json())
-            .then(data => setBroker(data)
-            )
-    }, [])
+            .then(data => setBroker(data))
+            .catch(error => console.error("Error fetching data:", error));
+    }, []);
 
-    // const filteredBrokers = brokers.filter(broker =>
-    //     broker.Name.includes('a') &&
-    //     broker.Area.includes('')
-    // );
+    useEffect(() => {
+        let filteredByName = brokers;
 
-    const filteredByName = brokers.filter(broker =>
-        broker.Name && typeof broker.Name === 'string' && broker.Name.toLowerCase().includes('Tamim'.toLowerCase())
-    );
-    const bothFilter = filteredByName.filter(broker =>
-        broker.Name && typeof broker.Area_Name === 'string' && broker.Area_Name.toLowerCase().includes('DhanMondi'.toLowerCase())
-    )
-    console.log(bothFilter);
+        // Filter by Name if NameSearch is provided
+        if (NameSearch && NameSearch !== '') {
+            filteredByName = filteredByName.filter(broker =>
+                broker.Name && typeof broker.Name === 'string' && broker.Name.toLowerCase().includes(NameSearch.toLowerCase())
+            );
+        }
 
+        // Filter by Area if AreaSearch is provided
+        if (AreaSearch && AreaSearch !== '') {
+            filteredByName = filteredByName.filter(broker =>
+                broker.Area_Name && typeof broker.Area_Name === 'string' && broker.Area_Name.toLowerCase().includes(AreaSearch.toLowerCase())
+            );
+        }
+
+        // Update the filterData state with the final filtered data
+        setFilterData(filteredByName);
+    }, [NameSearch, AreaSearch,]);  // Trigger when NameSearch, AreaSearch, or brokers change
+
+
+    // console.log(filterData);
 
     return (
         <div className='w-11/12 mx-auto mt-10 grid md:grid-cols-3 gap-16'>
             {
-                brokers.map(broker => <BrokerData
-                    // className='  Content   mx-auto'
+                filterData.map(broker => <BrokerData
                     broker={broker}
-                    AreaSearch={AreaSearch}
-                    NameSearch={NameSearch}
                     key={broker.ID}
                 ></BrokerData>)
             }
