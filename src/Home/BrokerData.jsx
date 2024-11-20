@@ -1,9 +1,24 @@
 import React from 'react';
 
-const BrokerData = (props) => {
-    const BrokerName = props.broker.Name;
-    const BrokerID = props.broker.ID;
-    const Picture_URL = props.broker.Picture_URL;
+const BrokerData = ({ broker, NameSearch, AreaSearch }) => {
+    const BrokerName = broker.Name;
+    const BrokerArea = broker.Area_Name;
+    const BrokerID = broker.ID;
+    const Picture_URL = broker.Picture_URL;
+
+    // console.log(brokerDatas);
+
+    // console.log(BrokerName, BrokerArea);
+
+
+    // const filteredBrokers = [broker].filter(Broker =>
+    //     Broker.Name.toLowerCase().includes(NameSearch.toLowerCase()) &&
+    //     Broker.Area.toLowerCase().includes(AreaSearch.toLowerCase())
+    // );
+
+    // console.log(BrokerName, NameSearch, AreaSearch);
+
+
 
     return (
         <div className="card glass w-full">

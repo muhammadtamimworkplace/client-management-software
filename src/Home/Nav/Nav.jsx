@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Hooks from "../../hooks/Hooks";
 
 const Nav = () => {
   // Step 1: Initialize a state variable to hold the search term
@@ -49,6 +50,13 @@ const Nav = () => {
           </div>
         </div>
       </div>
+      {
+        <Hooks
+          // className='  Content   mx-auto'
+          AreaSearch={AreaSearch}
+          NameSearch={NameSearch}
+        ></Hooks>
+      }
     </div>
   );
 };
