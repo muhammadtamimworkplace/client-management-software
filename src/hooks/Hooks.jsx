@@ -16,15 +16,10 @@ const Hooks = ({ AreaSearch, NameSearch }) => {
         let filteredByName = brokers;
 
         // Filter by Name if NameSearch is provided
-        if (NameSearch && NameSearch !== '') {
+        if ((NameSearch && AreaSearch || NameSearch | AreaSearch) !== '') {
             filteredByName = filteredByName.filter(broker =>
                 broker.Name && typeof broker.Name === 'string' && broker.Name.toLowerCase().includes(NameSearch.toLowerCase())
-            );
-        }
-
-        // Filter by Area if AreaSearch is provided
-        if (AreaSearch && AreaSearch !== '') {
-            filteredByName = filteredByName.filter(broker =>
+                &&
                 broker.Area_Name && typeof broker.Area_Name === 'string' && broker.Area_Name.toLowerCase().includes(AreaSearch.toLowerCase())
             );
         }

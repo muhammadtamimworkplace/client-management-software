@@ -1,7 +1,7 @@
 [
     {
         "ID": "1",
-        "Name": "Tamim",
+        "Name": "Jamil",
         "Father": "Hafizur Rahman",
         "Mother": "Noorunahar",
         "SSC_Batch": "2019",
@@ -41,7 +41,7 @@
         "NID": "987654321123",
         "Birth_Certificate": "BC-123987654",
         "Interested": "Research and Development",
-        "Picture_URL": "https://i.postimg.cc/JnzyWz9y/amina.jpg",
+        "Picture_URL": "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp",
         "Phone": "0187321546",
         "Email": "amina.ahmed@example.com"
     },
@@ -64,7 +64,7 @@
         "NID": "112233445566",
         "Birth_Certificate": "BC-987654321",
         "Interested": "Telecommunication Engineering",
-        "Picture_URL": "https://i.postimg.cc/vHq5X8hr/karim.jpg",
+        "Picture_URL": "https://plus.unsplash.com/premium_photo-1661508620175-3ae20da61cda",
         "Phone": "0176543210",
         "Email": "karim.khalid@example.com"
     },
