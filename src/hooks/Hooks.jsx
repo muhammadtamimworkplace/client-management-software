@@ -13,11 +13,11 @@ const Hooks = ({ AreaSearch, NameSearch }) => {
     }, []);
 
     useEffect(() => {
-        let filteredByName = brokers;
+        let filteredCollactions = brokers;
 
         // Filter by Name if NameSearch is provided
         if ((NameSearch && AreaSearch || NameSearch | AreaSearch) !== '') {
-            filteredByName = filteredByName.filter(broker =>
+            filteredCollactions = filteredCollactions.filter(broker =>
                 broker.Name && typeof broker.Name === 'string' && broker.Name.toLowerCase().includes(NameSearch.toLowerCase())
                 &&
                 broker.Area_Name && typeof broker.Area_Name === 'string' && broker.Area_Name.toLowerCase().includes(AreaSearch.toLowerCase())
@@ -25,8 +25,8 @@ const Hooks = ({ AreaSearch, NameSearch }) => {
         }
 
         // Update the filterData state with the final filtered data
-        setFilterData(filteredByName);
-    }, [NameSearch, AreaSearch,]);  // Trigger when NameSearch, AreaSearch, or brokers change
+        setFilterData(filteredCollactions);
+    }, [NameSearch, AreaSearch]);  // Trigger when NameSearch, AreaSearch change
 
 
     // console.log(filterData);
