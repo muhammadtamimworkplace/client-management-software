@@ -6,7 +6,7 @@ const Hooks = ({ AreaSearch, NameSearch }) => {
     const [filterData, setFilterData] = useState([]); // Store filtered data
 
     useEffect(() => {
-        fetch('/public/assets/data.json')
+        fetch('http://localhost:5000/clients')
             .then(res => res.json())
             .then(data => setBroker(data))
             .catch(error => console.error("Error fetching data:", error));
