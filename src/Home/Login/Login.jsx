@@ -1,7 +1,14 @@
 import { Input } from 'postcss';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha }
+    from 'react-simple-captcha';
 
 const Login = () => {
+
+    useEffect(() => {
+        loadCaptchaEnginge(6)
+    }, [])
+
     const HandleLogin = e => {
         e.preventDefault();
         const email = e.target.email.value;
@@ -36,6 +43,14 @@ const Login = () => {
                             </label>
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                            </label>
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <LoadCanvasTemplate />
+                            </label>
+                            <label className="input input-bordered flex items-center gap-2">
+                                <input type="captcha" name="captcha" className="grow" placeholder="Type the text captcha above" />
                             </label>
                         </div>
                         <div className="form-control mt-6">
