@@ -1,13 +1,22 @@
 import { Input } from 'postcss';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha }
     from 'react-simple-captcha';
 
 const Login = () => {
+    const [disable, setDisable] = useState(true);
+    const captchaRef = useRef(null); // Access the input value
 
     useEffect(() => {
         loadCaptchaEnginge(6)
     }, [])
+
+    const HandleCaptcha = () => {
+        const user_captcha_value = captchaRef.current.value; // Access the input value
+        if (validateCaptcha(user_captcha_value) == true) {
+            setDisable(false)
+        }
+    }
 
     const HandleLogin = e => {
         e.preventDefault();
@@ -46,15 +55,23 @@ const Login = () => {
                             </label>
                         </div>
                         <div className="form-control">
-                            <label className="label">
+                            <label className="label flex">
                                 <LoadCanvasTemplate />
+                                <label className="label cursor-pointer">
+                                    <span className="label-text mr-3">verify captcha</span>
+                                    <input type="checkbox" onClickCapture={HandleCaptcha} className="checkbox checkbox-primary" />
+                                    {/* defaultChecked */}
+                                </label>
                             </label>
                             <label className="input input-bordered flex items-center gap-2">
-                                <input type="captcha" name="captcha" className="grow" placeholder="Type the text captcha above" />
+                                <input type="captcha"
+                                    ref={captchaRef}
+                                    name="captcha" className="grow" placeholder="Type the text captcha above" />
+                                {/* <button onClickCapture={HandleCaptcha} className="btn btn-xs">verify me</button> */}
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <input className="btn btn-primary" type='submit' value={'Login'} />
+                            <input disabled={disable} className="btn btn-primary" type='submit' value={'Login'} />
                         </div>
                     </form>
                     <div className="divider">OR</div>
