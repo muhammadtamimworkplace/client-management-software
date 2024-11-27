@@ -1,11 +1,15 @@
 import { Input } from 'postcss';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha }
     from 'react-simple-captcha';
+import { AuthContext } from '../../providers/authprovider';
+import { Link } from 'react-router-dom';
+import loginImg from '../../../public/assets/login.avif'
 
 const Login = () => {
     const [disable, setDisable] = useState(true);
     const captchaRef = useRef(null); // Access the input value
+    // const { signIn } = useContext(AuthContext);
 
     useEffect(() => {
         loadCaptchaEnginge(6)
@@ -23,12 +27,17 @@ const Login = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
         console.log(email, password);
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
     }
     return (
         <div className="bg-base-200 min-h-screen flex items-center justify-center">
             <div className="card lg:card-side bg-base-100 shadow-xl max-w-4xl w-full">
                 <figure className="lg:w-1/2">
-                    <img src="https://picsum.photos/seed/login/800/600" alt="Random image" className="object-cover w-full h-full" />
+                    <img src={loginImg} alt="Random image" className="object-cover w-full h-full" />
                 </figure>
                 <div className="card-body lg:w-1/2">
                     <h2 className="card-title text-2xl font-bold mb-6">Login</h2>
@@ -77,7 +86,7 @@ const Login = () => {
                     <div className="divider">OR</div>
                     <div className="text-center">
                         <p>Don't have an account?</p>
-                        <a href="#" className="link link-primary">Sign up now</a>
+                        <Link to="/signup" className="link link-primary">Sign up now</Link>
                     </div>
                 </div>
             </div>
