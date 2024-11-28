@@ -1,11 +1,11 @@
-import React, { Children, createContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { app } from '../firebase/firebase.config';
 
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
 export const AuthContext = createContext(null);
-const AuthProvider = ({ Children }) => {
+const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
 
@@ -39,7 +39,7 @@ const AuthProvider = ({ Children }) => {
     }
     return (
         <AuthContext.Provider value={authInfo}>
-            {Children}
+            {children}
         </AuthContext.Provider>
     );
 };
