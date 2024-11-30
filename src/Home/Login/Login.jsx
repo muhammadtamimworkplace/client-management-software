@@ -6,6 +6,7 @@ import { AuthContext } from '../../providers/authprovider';
 import { Link } from 'react-router-dom';
 import loginImg from '../../../public/assets/login.avif'
 import { Helmet } from 'react-helmet';
+import Swal from 'sweetalert2';
 
 const Login = () => {
     const [disable, setDisable] = useState(true);
@@ -27,11 +28,24 @@ const Login = () => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(email, password);
+        // console.log(email, password);
         signIn(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                Swal.fire({
+                    title: "Login completed",
+                    // text: "You clicked the button!",
+                    icon: "success"
+                });
+            })
+            .catch(error => {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Invalid email or password",
+                    // footer: '<a href="#">Why do I have this issue?</a>'
+                });
             })
     }
     return (
@@ -94,6 +108,8 @@ const Login = () => {
                         <div className="text-center">
                             <p>Don't have an account?</p>
                             <Link to="/signup" className="link link-primary">Sign up now</Link>
+                            <br />
+                            <Link to="/" className="link link-primary">Home page</Link>
                         </div>
                     </div>
                 </div>

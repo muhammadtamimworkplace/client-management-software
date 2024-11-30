@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { app } from '../firebase/firebase.config';
 
 // Initialize Firebase Authentication and get a reference to the service
@@ -27,7 +27,9 @@ const AuthProvider = ({ children }) => {
             console.log('current User', currentUser)
             setLoading(false)
         })
-        return unSubscribe();
+        return () => {
+            return unSubscribe();
+        }
     }, [])
 
     const authInfo = {

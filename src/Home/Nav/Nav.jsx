@@ -1,7 +1,42 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Hooks from "../../hooks/Hooks";
+import { AuthContext } from "../../providers/authprovider";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Nav = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        Swal.fire("Logout completed")
+      })
+      .catch(error => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: "<>Can't LogOut<>"
+        });
+      })
+  }
+
+  // console.log(user);
+  const IsLogin = <>
+
+    {
+      user ? <>
+        <button onClick={handleLogOut}>Logout</button>
+      </>
+        :
+        <>
+          <Link to={"/login"}>
+            Login
+          </Link>
+        </>
+    }
+  </>
+
   // Step 1: Initialize a state variable to hold the search term
   const [AreaSearch, setAreaSearch] = useState("");
   const [NameSearch, setNameSearch] = useState("");
@@ -32,7 +67,7 @@ const Nav = () => {
               <div className="w-10 rounded-full">
                 <img
                   alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                  src="https://www.w3.org/assets/website-2021/svg/avatar.svg" />
               </div>
             </div>
             <ul
@@ -40,12 +75,11 @@ const Nav = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
               <li>
                 <a className="justify-between">
-                  Profile
+                  Dashboard
                   <span className="badge">New</span>
                 </a>
               </li>
-              <li><a>Settings</a></li>
-              <li><a>Logout</a></li>
+              <li >{IsLogin}</li>
             </ul>
           </div>
         </div>
