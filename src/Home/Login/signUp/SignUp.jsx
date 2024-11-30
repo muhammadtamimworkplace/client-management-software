@@ -15,12 +15,13 @@ const SignUp = () => {
         createUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user
-                console.log(loggedUser)
+                console.log(loggedUser);
+                Swal.fire("successfully created this account.");
             })
             .catch(error => {
                 if (error.code === "auth/email-already-in-use") {
                     Swal.fire({
-                        title: "Can't created ",
+                        title: "Sorry",
                         text: "Already , Have a account in this mail.",
                         icon: "question"
                     });
