@@ -4,6 +4,7 @@ import signUpImg from '../../../../public/assets/signUp.avif'
 import { useForm } from 'react-hook-form';
 import { Helmet } from 'react-helmet';
 import { AuthContext } from '../../../providers/authprovider';
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -15,6 +16,25 @@ const SignUp = () => {
             .then(result => {
                 const loggedUser = result.user
                 console.log(loggedUser)
+            })
+            .catch(error => {
+                if (error.code === "auth/email-already-in-use") {
+                    Swal.fire({
+                        title: "Can't created ",
+                        text: "Already , Have a account in this mail.",
+                        icon: "question"
+                    });
+                }
+                else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Something went wrong!",
+                        footer: 'Try again later.'
+                    });
+                }
+
+
             })
     };
 
