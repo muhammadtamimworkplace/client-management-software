@@ -9,7 +9,7 @@ import loginImg from '../../../public/assets/login.avif'
 const Login = () => {
     const [disable, setDisable] = useState(true);
     const captchaRef = useRef(null); // Access the input value
-    // const { signIn } = useContext(AuthContext);
+    const { signIn } = useContext(AuthContext);
 
     useEffect(() => {
         loadCaptchaEnginge(6)
