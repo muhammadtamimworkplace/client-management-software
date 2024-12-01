@@ -10,6 +10,7 @@ import Hooks from './hooks/Hooks.jsx';
 import Login from './Home/Login/Login.jsx';
 import AuthProvider from './providers/authprovider.jsx';
 import SignUp from './Home/Login/signUp/signUp.jsx';
+import Dashboard from './Dashboard/Dashboard.jsx';
 
 
 const router = createBrowserRouter([
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <SignUp />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
   },
 ]);
 
