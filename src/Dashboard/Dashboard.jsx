@@ -78,7 +78,7 @@ const Dashboard = () => {
                     </Link>
                 </div>
                 <div className=' hover:bg-stone-300 rounded p-2'>
-                    <Link to={'/dashboard'} className=" rounded flex ">
+                    <Link to={'/dashboard'} onClick={handleLogOut} className=" rounded flex ">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"
@@ -92,7 +92,7 @@ const Dashboard = () => {
                             <path d="M17 16l4-4-4-4" />
                             <path d="M3 12h14M7 6v12" />
                         </svg>
-                        <p className=" ml-6 mt-1 text-white hover:text-gray-600"> <button onClick={handleLogOut}>Logout</button></p>
+                        <p className=" ml-6 mt-1 text-white hover:text-gray-600"> <button>Logout</button></p>
                     </Link>
                 </div>
             </div>
