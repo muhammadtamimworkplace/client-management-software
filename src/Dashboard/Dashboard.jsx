@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Nav from '../Home/Nav/Nav';
 import { Link } from 'react-router-dom';
 import AddNewClients from './AddNewClients';
+import { AuthContext } from '../providers/authprovider';
 
 const Dashboard = () => {
+    const { logOut } = useContext(AuthContext);
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                Swal.fire("Logout completed")
+            })
+            .catch(error => {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                    footer: "<>Can't LogOut<>"
+                });
+            })
+    }
     return (
         <div className='grid grid-cols-8 bg-pink-300 h-screen'>
             <div className="bg-stone-600 p-8 col-span-2 fixed h-full">
@@ -59,6 +75,24 @@ const Dashboard = () => {
                             />
                         </svg>
                         <p className=" ml-6 mt-1 text-white hover:text-gray-600">Home | Page</p>
+                    </Link>
+                </div>
+                <div className=' hover:bg-stone-300 rounded p-2'>
+                    <Link to={'/dashboard'} className=" rounded flex ">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="w-10 h-10 text-gray-800 hover:text-indigo-500 transform hover:scale-110 transition duration-300 ease-in-out shadow-lg rounded-full p-2 hover:shadow-2xl"
+                        >
+                            <path d="M17 16l4-4-4-4" />
+                            <path d="M3 12h14M7 6v12" />
+                        </svg>
+                        <p className=" ml-6 mt-1 text-white hover:text-gray-600"> <button onClick={handleLogOut}>Logout</button></p>
                     </Link>
                 </div>
             </div>
