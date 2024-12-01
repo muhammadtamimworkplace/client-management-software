@@ -1,40 +1,54 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import './index.css';
 import {
   createBrowserRouter,
   RouterProvider,
-} from "react-router-dom";
+} from 'react-router-dom';
 import Main from './Home/Main/Main.jsx';
 import Hooks from './hooks/Hooks.jsx';
 import Login from './Home/Login/Login.jsx';
 import AuthProvider from './providers/authprovider.jsx';
 import SignUp from './Home/Login/signUp/signUp.jsx';
 import Dashboard from './Dashboard/Dashboard.jsx';
-
+import PrivateRoute from './PrivateRoute/PrivateRoute.jsx';
+// import AdminRoute from './PrivateRoute/AdminRoute.jsx';
+import NotFound from './components/NotFound.jsx'; // Optional: Create a NotFound component
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Main />,
     children: [
       {
-        path: "/",
-        element: <Hooks />,
+        path: '/',
+        element: (
+          <PrivateRoute>
+            <Hooks />
+          </PrivateRoute>
+        ),
       },
     ],
   },
   {
-    path: "/login",
+    path: '/login',
     element: <Login />,
   },
   {
-    path: "/signup",
+    path: '/signup',
     element: <SignUp />,
   },
   {
-    path: "/dashboard",
-    element: <Dashboard />,
+    path: '/dashboard',
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: '*', // Catch-all for undefined routes
+    element: <NotFound />,
   },
 ]);
 
@@ -43,5 +57,5 @@ createRoot(document.getElementById('root')).render(
     <AuthProvider>
       <RouterProvider router={router} />
     </AuthProvider>
-  </StrictMode>,
-)
+  </StrictMode>
+);

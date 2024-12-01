@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import signUpImg from '../../../../public/assets/signUp.avif'
 import { useForm } from 'react-hook-form';
 import { Helmet } from 'react-helmet';
@@ -9,6 +9,9 @@ import Swal from 'sweetalert2';
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
 
     const onSubmit = data => {
         // console.log(data, data.email, data.password);
@@ -17,6 +20,7 @@ const SignUp = () => {
                 const loggedUser = result.user
                 console.log(loggedUser);
                 Swal.fire("successfully created this account.");
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 if (error.code === "auth/email-already-in-use") {

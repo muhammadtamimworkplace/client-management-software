@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha }
     from 'react-simple-captcha';
 import { AuthContext } from '../../providers/authprovider';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginImg from '../../../public/assets/login.avif'
 import { Helmet } from 'react-helmet';
 import Swal from 'sweetalert2';
@@ -12,6 +12,9 @@ const Login = () => {
     const [disable, setDisable] = useState(true);
     const captchaRef = useRef(null); // Access the input value
     const { signIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
 
     useEffect(() => {
         loadCaptchaEnginge(6)
@@ -38,6 +41,7 @@ const Login = () => {
                     // text: "You clicked the button!",
                     icon: "success"
                 });
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 Swal.fire({
