@@ -1,11 +1,12 @@
 import React from 'react';
 import Nav from '../Home/Nav/Nav';
 import { Link } from 'react-router-dom';
+import AddNewClients from './AddNewClients';
 
 const Dashboard = () => {
     return (
         <div className='grid grid-cols-8 bg-pink-300 h-screen'>
-            <div className="bg-stone-600 p-8 col-span-2 ">
+            <div className="bg-stone-600 p-8 col-span-2 fixed h-full">
                 <div className=' hover:bg-stone-300 rounded p-2'>
                     <Link to={'/dashboard'} className=" rounded flex ">
                         <svg
@@ -61,8 +62,9 @@ const Dashboard = () => {
                     </Link>
                 </div>
             </div>
+            <div className='col-span-2'></div>
             <div className="bg-blue-500 h-full col-span-6">
-
+                <AddNewClients></AddNewClients>
             </div>
         </div>
     );
