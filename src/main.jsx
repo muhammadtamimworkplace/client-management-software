@@ -14,6 +14,7 @@ import Dashboard from './Dashboard/Dashboard.jsx';
 import PrivateRoute from './PrivateRoute/PrivateRoute.jsx';
 // import AdminRoute from './PrivateRoute/AdminRoute.jsx';
 import NotFound from './components/NotFound.jsx'; // Optional: Create a NotFound component
+import DetailsClient from './components/DetailsClient/DetailsClient.jsx';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
         <Dashboard />
       </PrivateRoute>
     ),
+  },
+  {
+    path: '/client/:_id', // Catch-all for undefined routes
+    element: <DetailsClient />,
   },
   {
     path: '*', // Catch-all for undefined routes

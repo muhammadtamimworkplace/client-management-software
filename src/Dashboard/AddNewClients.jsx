@@ -1,158 +1,350 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-const StylishForm = () => {
+const AddNewClients = () => {
     const [formData, setFormData] = useState({
-        ID: "9",
-        Name: "Rima",
-        Father: "Ali Akbar",
-        Mother: "Amina Begum",
-        SSC_Batch: "2020",
-        SSC_Completed_School_Name: "Sunshine Academy, Chittagong",
-        HSC_Batch: "2022",
-        College_Name: "Chittagong University of Engineering and Technology",
-        Subject: "Chemical Engineering",
-        Area_Name: "Chittagong, Bangladesh",
-        Service: "Process Engineer",
-        Service_Field: "Chemical Industry",
-        Date_of_Birth: "2001-06-20",
-        Phone: "0176987450",
-        Email: "rima.akbar@example.com",
+        ID: "",
+        Name: "",
+        Father: "",
+        Mother: "",
+        SSC_Batch: "",
+        SSC_Completed_School_Name: "",
+        HSC_Batch: "",
+        College_Name: "",
+        Subject: "",
+        Area_Name: "",
+        Service: "",
+        Service_Field: "",
+        Has_Business: false,
+        Business_Address: "",
+        Date_of_Birth: "",
+        NID: "",
+        Birth_Certificate: "",
+        Interested: "",
+        Phone: "",
+        Email: "",
     });
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        const { name, value, type, checked } = e.target;
+        setFormData({
+            ...formData,
+            [name]: type === 'checkbox' ? checked : value,
+        });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Form Data Submitted:", formData);
+        // Handle form submission logic here
+        console.log(formData);
     };
 
     return (
-        <div className="flex items-center my-5 py-5 justify-center min-h-screen bg-gray-100">
-            <form
-                className="bg-white shadow-lg rounded-lg p-6 w-full max-w-2xl"
-                onSubmit={handleSubmit}
-            >
-                <h2 className="text-2xl font-bold mb-6 text-blue-500">
-                    Profile Information
-                </h2>
+        <div className="max-w-4xl mx-auto py-6 ">
+            <h2 className="text-3xl font-bold text-center mb-6">Submit Your Information</h2>
 
+            <form onSubmit={handleSubmit} className="space-y-4">
                 {/* ID */}
-                <div className="mb-4">
-                    <label className="block font-medium text-gray-700">ID</label>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">ID</span>
+                    </label>
                     <input
                         type="text"
                         name="ID"
                         value={formData.ID}
                         onChange={handleChange}
-                        className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+                        className="input input-bordered w-full"
+                        placeholder="Enter ID"
                     />
                 </div>
 
                 {/* Name */}
-                <div className="mb-4">
-                    <label className="block font-medium text-gray-700">Name</label>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Name</span>
+                    </label>
                     <input
                         type="text"
                         name="Name"
                         value={formData.Name}
                         onChange={handleChange}
-                        className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+                        className="input input-bordered w-full"
+                        placeholder="Enter Name"
                     />
                 </div>
 
-                {/* Father's Name */}
-                <div className="mb-4">
-                    <label className="block font-medium text-gray-700">Father</label>
+                {/* Father Name */}
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Father's Name</span>
+                    </label>
                     <input
                         type="text"
                         name="Father"
                         value={formData.Father}
                         onChange={handleChange}
-                        className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+                        className="input input-bordered w-full"
+                        placeholder="Enter Father's Name"
                     />
                 </div>
 
-                {/* Mother's Name */}
-                <div className="mb-4">
-                    <label className="block font-medium text-gray-700">Mother</label>
+                {/* Mother Name */}
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Mother's Name</span>
+                    </label>
                     <input
                         type="text"
                         name="Mother"
                         value={formData.Mother}
                         onChange={handleChange}
-                        className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+                        className="input input-bordered w-full"
+                        placeholder="Enter Mother's Name"
                     />
                 </div>
 
                 {/* SSC Batch */}
-                <div className="mb-4">
-                    <label className="block font-medium text-gray-700">SSC Batch</label>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">SSC Batch</span>
+                    </label>
                     <input
                         type="text"
                         name="SSC_Batch"
                         value={formData.SSC_Batch}
                         onChange={handleChange}
-                        className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+                        className="input input-bordered w-full"
+                        placeholder="Enter SSC Batch"
+                    />
+                </div>
+
+                {/* SSC Completed School Name */}
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">SSC Completed School Name</span>
+                    </label>
+                    <input
+                        type="text"
+                        name="SSC_Completed_School_Name"
+                        value={formData.SSC_Completed_School_Name}
+                        onChange={handleChange}
+                        className="input input-bordered w-full"
+                        placeholder="Enter School Name"
+                    />
+                </div>
+
+                {/* HSC Batch */}
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">HSC Batch</span>
+                    </label>
+                    <input
+                        type="text"
+                        name="HSC_Batch"
+                        value={formData.HSC_Batch}
+                        onChange={handleChange}
+                        className="input input-bordered w-full"
+                        placeholder="Enter HSC Batch"
                     />
                 </div>
 
                 {/* College Name */}
-                <div className="mb-4">
-                    <label className="block font-medium text-gray-700">College Name</label>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">College Name</span>
+                    </label>
                     <input
                         type="text"
                         name="College_Name"
                         value={formData.College_Name}
                         onChange={handleChange}
-                        className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+                        className="input input-bordered w-full"
+                        placeholder="Enter College Name"
                     />
                 </div>
 
                 {/* Subject */}
-                <div className="mb-4">
-                    <label className="block font-medium text-gray-700">Subject</label>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Subject</span>
+                    </label>
                     <input
                         type="text"
                         name="Subject"
                         value={formData.Subject}
                         onChange={handleChange}
-                        className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+                        className="input input-bordered w-full"
+                        placeholder="Enter Subject"
+                    />
+                </div>
+
+                {/* Area Name */}
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Area Name</span>
+                    </label>
+                    <input
+                        type="text"
+                        name="Area_Name"
+                        value={formData.Area_Name}
+                        onChange={handleChange}
+                        className="input input-bordered w-full"
+                        placeholder="Enter Area Name"
+                    />
+                </div>
+
+                {/* Service */}
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Service</span>
+                    </label>
+                    <input
+                        type="text"
+                        name="Service"
+                        value={formData.Service}
+                        onChange={handleChange}
+                        className="input input-bordered w-full"
+                        placeholder="Enter Service"
+                    />
+                </div>
+
+                {/* Service Field */}
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Service Field</span>
+                    </label>
+                    <input
+                        type="text"
+                        name="Service_Field"
+                        value={formData.Service_Field}
+                        onChange={handleChange}
+                        className="input input-bordered w-full"
+                        placeholder="Enter Service Field"
+                    />
+                </div>
+                {/* Bussiness Has */}
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Bussiness Field</span>
+                    </label>
+                    <input
+                        type="text"
+                        name="Service_Field"
+                        value={formData.Service_Field}
+                        onChange={handleChange}
+                        className="input input-bordered w-full"
+                        placeholder="Enter Service Field"
+                    />
+                </div>
+
+
+                {/* Business Address */}
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Business Address</span>
+                    </label>
+                    <input
+                        type="text"
+                        name="Business_Address"
+                        value={formData.Business_Address}
+                        onChange={handleChange}
+                        className="input input-bordered w-full"
+                        placeholder="Enter Business Address"
+                    />
+                </div>
+
+                {/* Date of Birth */}
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Date of Birth</span>
+                    </label>
+                    <input
+                        type="date"
+                        name="Date_of_Birth"
+                        value={formData.Date_of_Birth}
+                        onChange={handleChange}
+                        className="input input-bordered w-full"
+                    />
+                </div>
+
+                {/* NID */}
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">NID</span>
+                    </label>
+                    <input
+                        type="text"
+                        name="NID"
+                        value={formData.NID}
+                        onChange={handleChange}
+                        className="input input-bordered w-full"
+                        placeholder="Enter NID"
+                    />
+                </div>
+
+                {/* Birth Certificate No. */}
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Birth Certificate No.</span>
+                    </label>
+                    <input
+                        type="text"
+                        name="Birth_Certificate"
+                        value={formData.Birth_Certificate}
+                        onChange={handleChange}
+                        className="input input-bordered w-full"
+                        placeholder="Enter Birth Certificate No."
+                    />
+                </div>
+
+                {/* Interested */}
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Interested In</span>
+                    </label>
+                    <input
+                        type="text"
+                        name="Interested"
+                        value={formData.Interested}
+                        onChange={handleChange}
+                        className="input input-bordered w-full"
+                        placeholder="Enter Your Interests"
                     />
                 </div>
 
                 {/* Phone */}
-                <div className="mb-4">
-                    <label className="block font-medium text-gray-700">Phone</label>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Phone</span>
+                    </label>
                     <input
-                        type="tel"
+                        type="text"
                         name="Phone"
                         value={formData.Phone}
                         onChange={handleChange}
-                        className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+                        className="input input-bordered w-full"
+                        placeholder="Enter Phone Number"
                     />
                 </div>
 
                 {/* Email */}
-                <div className="mb-4">
-                    <label className="block font-medium text-gray-700">Email</label>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Email</span>
+                    </label>
                     <input
                         type="email"
                         name="Email"
                         value={formData.Email}
                         onChange={handleChange}
-                        className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+                        className="input input-bordered w-full"
+                        placeholder="Enter Email Address"
                     />
                 </div>
 
                 {/* Submit Button */}
-                <div className="flex justify-end">
-                    <button
-                        type="submit"
-                        className="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-                    >
+                <div className="form-control mt-4">
+                    <button type="submit" className="btn btn-primary w-full">
                         Submit
                     </button>
                 </div>
@@ -161,4 +353,4 @@ const StylishForm = () => {
     );
 };
 
-export default StylishForm;
+export default AddNewClients;

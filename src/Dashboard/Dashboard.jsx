@@ -98,7 +98,7 @@ const Dashboard = () => {
             </div>
             <div className='col-span-2'></div>
             <div className="bg-blue-500 h-full col-span-6">
-                <AddNewClients></AddNewClients>
+                <AddNewClients className='m-10'></AddNewClients>
             </div>
         </div>
     );

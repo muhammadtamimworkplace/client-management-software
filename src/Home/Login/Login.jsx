@@ -112,8 +112,6 @@ const Login = () => {
                         <div className="text-center">
                             <p>Don't have an account?</p>
                             <Link to="/signup" className="link link-primary">Sign up now</Link>
-                            <br />
-                            <Link to="/" className="link link-primary">Home page</Link>
                         </div>
                     </div>
                 </div>
