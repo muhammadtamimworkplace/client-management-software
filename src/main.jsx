@@ -49,7 +49,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/client/:id', // Catch-all for undefined routes
-    element: <DetailsClient />,
+    element: <PrivateRoute><DetailsClient /></PrivateRoute>,
     loader: ({ params }) => fetch(`http://localhost:5000/clients/${params.id}`)
   },
   {
