@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const BrokerData = ({ broker, NameSearch, AreaSearch }) => {
     const BrokerName = broker.Name;
@@ -23,7 +24,7 @@ const BrokerData = ({ broker, NameSearch, AreaSearch }) => {
                 <span>Area : {BrokerArea}</span>
                 <span>Phone : {phone}</span>
                 <div className="card-actions  justify-center">
-                    <button className="btn btn-primary">More info</button>
+                    <Link to={`/client/${BrokerID}`} className="btn btn-primary">More info</Link>
                 </div>
             </div>
         </div>

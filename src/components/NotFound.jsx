@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './style/ronaldo.css'
 import React from "react";
 
@@ -24,7 +25,7 @@ function NotFound() {
                 </div>
             </div>
 
-            <button className="go-back-button">Go Back Home</button>
+            <Link to={'/'} className="go-back-button">Go Back Home</Link>
         </div>
 
 
