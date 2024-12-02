@@ -7,6 +7,7 @@ const BrokerData = ({ broker, NameSearch, AreaSearch }) => {
     const BrokerID = broker.ID;
     const Picture_URL = broker.Picture_URL;
     const phone = broker.Phone;
+    const broker_id = broker._id;
 
     return (
         <div className="card glass w-full">
@@ -24,7 +25,7 @@ const BrokerData = ({ broker, NameSearch, AreaSearch }) => {
                 <span>Area : {BrokerArea}</span>
                 <span>Phone : {phone}</span>
                 <div className="card-actions  justify-center">
-                    <Link to={`/client/${BrokerID}`} className="btn btn-primary">More info</Link>
+                    <Link to={`/client/${broker_id}`} className="btn btn-primary">More info</Link>
                 </div>
             </div>
         </div>

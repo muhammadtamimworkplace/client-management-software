@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const DetailsCard = ({
     photoURL,
@@ -24,6 +24,9 @@ const DetailsCard = ({
     Phone,
     Email,
 }) => {
+    const loadedClient = useLoaderData();
+    console.log(loadedClient);
+
     return (
         <div
             style={{
@@ -47,7 +50,7 @@ const DetailsCard = ({
                 }}
             >
                 <img
-                    src={photoURL || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"}
+                    src={loadedClient.Picture_URL || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"}
                     alt="Profile"
                     style={{
                         width: "120px",
@@ -65,54 +68,54 @@ const DetailsCard = ({
             {/* Details Section */}
             <div style={{ padding: "20px", color: "#333" }}>
                 <p>
-                    <strong>ID:</strong> {'ID || "N/A"'}
+                    <strong>ID:</strong> {loadedClient.ID || "N/A"}
                 </p>
                 <p>
-                    <strong>Father:</strong> {'Father || "N/A"'}
+                    <strong>Father:</strong> {loadedClient.Father || "N/A"}
                 </p>
                 <p>
-                    <strong>Mother:</strong> {'Mother || "N/A"'}
+                    <strong>Mother:</strong> {Mother || "N/A"}
                 </p>
                 <p>
-                    <strong>SSC Batch:</strong> {'SSC_Batch || "N/A"'}
+                    <strong>SSC Batch:</strong> {SSC_Batch || "N/A"}
                 </p>
                 <p>
-                    <strong>SSC School:</strong> {'SSC_Completed_School_Name || "N/A"'}
+                    <strong>SSC School:</strong> {SSC_Completed_School_Name || "N/A"}
                 </p>
                 <p>
-                    <strong>HSC Batch:</strong> {'HSC_Batch || "N/A"'}
+                    <strong>HSC Batch:</strong> {HSC_Batch || "N/A"}
                 </p>
                 <p>
-                    <strong>College Name:</strong> {'College_Name || "N/A"'}
+                    <strong>College Name:</strong> {College_Name || "N/A"}
                 </p>
                 <p>
-                    <strong>Subject:</strong> {'Subject || "N/A"'}
+                    <strong>Subject:</strong> {Subject || "N/A"}
                 </p>
                 <p>
-                    <strong>Has Business:</strong> {'Has_Business ? "Yes" : "No"'}
+                    <strong>Has Business:</strong> {Has_Business ? "Yes" : "No"}
                 </p>
                 {Has_Business && (
                     <p>
-                        <strong>Business Address:</strong> {'Business_Address || "N/A"'}
+                        <strong>Business Address:</strong> {Business_Address || "N/A"}
                     </p>
                 )}
                 <p>
-                    <strong>Date of Birth:</strong> {'Date_of_Birth || "N/A"'}
+                    <strong>Date of Birth:</strong> {Date_of_Birth || "N/A"}
                 </p>
                 <p>
-                    <strong>NID:</strong> {'NID || "N/A"'}
+                    <strong>NID:</strong> {NID || "N/A"}
                 </p>
                 <p>
-                    <strong>Birth Certificate:</strong> {'Birth_Certificate || "N/A"'}
+                    <strong>Birth Certificate:</strong> {Birth_Certificate || "N/A"}
                 </p>
                 <p>
-                    <strong>Interested In:</strong> {'Interested || "N/A"'}
+                    <strong>Interested In:</strong> {Interested || "N/A"}
                 </p>
                 <p>
-                    <strong>Phone:</strong> {'Phone || "N/A"'}
+                    <strong>Phone:</strong> {Phone || "N/A"}
                 </p>
                 <p>
-                    <strong>Email:</strong> {'Email || "N/A"'}
+                    <strong>Email:</strong> {Email || "N/A"}
                 </p>
 
                 <Link to={'/'}>
