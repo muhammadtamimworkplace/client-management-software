@@ -60,9 +60,9 @@ const DetailsCard = ({
                         objectFit: "cover",
                     }}
                 />
-                <h2 style={{ marginTop: "15px", marginBottom: "5px" }}>{'Name || "N/A"'}</h2>
-                <p style={{ fontSize: "14px", marginBottom: "5px" }}>{'Service || "N/A"'}</p>
-                <p style={{ fontSize: "12px" }}>{'Area_Name || "N/A"'}</p>
+                <h2 style={{ marginTop: "15px", marginBottom: "5px" }}>{loadedClient.Name || "N/A"}</h2>
+                <p style={{ fontSize: "14px", marginBottom: "5px" }}>{loadedClient.Service || "N/A"}</p>
+                <p style={{ fontSize: "12px" }}>{loadedClient.Area_Name || "N/A"}</p>
             </div>
 
             {/* Details Section */}
@@ -74,48 +74,48 @@ const DetailsCard = ({
                     <strong>Father:</strong> {loadedClient.Father || "N/A"}
                 </p>
                 <p>
-                    <strong>Mother:</strong> {Mother || "N/A"}
+                    <strong>Mother:</strong> {loadedClient.Mother || "N/A"}
                 </p>
                 <p>
-                    <strong>SSC Batch:</strong> {SSC_Batch || "N/A"}
+                    <strong>SSC Batch:</strong> {loadedClient.SSC_Batch || "N/A"}
                 </p>
                 <p>
-                    <strong>SSC School:</strong> {SSC_Completed_School_Name || "N/A"}
+                    <strong>SSC School:</strong> {loadedClient.SSC_Completed_School_Name || "N/A"}
                 </p>
                 <p>
-                    <strong>HSC Batch:</strong> {HSC_Batch || "N/A"}
+                    <strong>HSC Batch:</strong> {loadedClient.HSC_Batch || "N/A"}
                 </p>
                 <p>
-                    <strong>College Name:</strong> {College_Name || "N/A"}
+                    <strong>College Name:</strong> {loadedClient.College_Name || "N/A"}
                 </p>
                 <p>
-                    <strong>Subject:</strong> {Subject || "N/A"}
+                    <strong>Subject:</strong> {loadedClient.Subject || "N/A"}
                 </p>
                 <p>
-                    <strong>Has Business:</strong> {Has_Business ? "Yes" : "No"}
+                    <strong>Has Business:</strong> {loadedClient.Has_Business ? "Yes" : "No"}
                 </p>
-                {Has_Business && (
+                {loadedClient.Has_Business && (
                     <p>
                         <strong>Business Address:</strong> {Business_Address || "N/A"}
                     </p>
                 )}
                 <p>
-                    <strong>Date of Birth:</strong> {Date_of_Birth || "N/A"}
+                    <strong>Date of Birth:</strong> {loadedClient.Date_of_Birth || "N/A"}
                 </p>
                 <p>
-                    <strong>NID:</strong> {NID || "N/A"}
+                    <strong>NID:</strong> {loadedClient.NID || "N/A"}
                 </p>
                 <p>
-                    <strong>Birth Certificate:</strong> {Birth_Certificate || "N/A"}
+                    <strong>Birth Certificate:</strong> {loadedClient.Birth_Certificate || "N/A"}
                 </p>
                 <p>
-                    <strong>Interested In:</strong> {Interested || "N/A"}
+                    <strong>Interested In:</strong> {loadedClient.Interested || "N/A"}
                 </p>
                 <p>
-                    <strong>Phone:</strong> {Phone || "N/A"}
+                    <strong>Phone:</strong> {loadedClient.Phone || "N/A"}
                 </p>
                 <p>
-                    <strong>Email:</strong> {Email || "N/A"}
+                    <strong>Email:</strong> {loadedClient.Email || "N/A"}
                 </p>
 
                 <Link to={'/'}>
