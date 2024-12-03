@@ -52,6 +52,30 @@ const AddNewClients = () => {
             })
             .then(data => {
                 console.log(data); // Handle response data here
+
+                // Reset the form state after submission
+                setFormData({
+                    ID: "",
+                    Name: "",
+                    Father: "",
+                    Mother: "",
+                    SSC_Batch: "",
+                    SSC_Completed_School_Name: "",
+                    HSC_Batch: "",
+                    College_Name: "",
+                    Subject: "",
+                    Area_Name: "",
+                    Service: "",
+                    Service_Field: "",
+                    Has_Business: false,
+                    Business_Address: "",
+                    Date_of_Birth: "",
+                    NID: "",
+                    Birth_Certificate: "",
+                    Interested: "",
+                    Phone: "",
+                    Email: "",
+                });
             })
             .catch(error => {
                 console.error('There was a problem with the fetch operation:', error); // Error handling
