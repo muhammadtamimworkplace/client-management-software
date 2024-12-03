@@ -75,6 +75,7 @@ const AddNewClients = () => {
                     Interested: "",
                     Phone: "",
                     Email: "",
+                    Picture_URL: ""
                 });
             })
             .catch(error => {
@@ -111,6 +112,20 @@ const AddNewClients = () => {
                         type="text"
                         name="Name"
                         value={formData.Name}
+                        onChange={handleChange}
+                        className="input input-bordered w-full"
+                        placeholder="Enter Name"
+                    />
+                </div>
+
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Photo URL</span>
+                    </label>
+                    <input
+                        type="text"
+                        name="Picture_URL"
+                        value={formData.Picture_URL}
                         onChange={handleChange}
                         className="input input-bordered w-full"
                         placeholder="Enter Name"
