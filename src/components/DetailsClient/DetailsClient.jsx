@@ -60,7 +60,7 @@ const DetailsCard = ({
                         objectFit: "cover",
                     }}
                 />
-                <h2 style={{ marginTop: "15px", marginBottom: "5px" }}>{loadedClient.Name || "N/A"}</h2>
+                <h2 className="text-3xl" style={{ marginTop: "15px", marginBottom: "5px" }}>{loadedClient.Name || "N/A"}</h2>
                 <p style={{ fontSize: "14px", marginBottom: "5px" }}>{loadedClient.Service || "N/A"}</p>
                 <p style={{ fontSize: "12px" }}>{loadedClient.Area_Name || "N/A"}</p>
             </div>
