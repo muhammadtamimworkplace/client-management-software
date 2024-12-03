@@ -36,6 +36,26 @@ const AddNewClients = () => {
         e.preventDefault();
         // Handle form submission logic here
         console.log(formData);
+
+        fetch('http://localhost:5000/clients', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json', // Inform the server about the content type
+            },
+            body: JSON.stringify(formData), // Convert formData to a JSON string
+        })
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return res.json();
+            })
+            .then(data => {
+                console.log(data); // Handle response data here
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error); // Error handling
+            });
     };
 
     return (
@@ -229,8 +249,8 @@ const AddNewClients = () => {
                     </label>
                     <input
                         type="text"
-                        name="Service_Field"
-                        value={formData.Service_Field}
+                        name="Has_Business"
+                        value={formData.Has_Business}
                         onChange={handleChange}
                         className="input input-bordered w-full"
                         placeholder="Enter Service Field"
