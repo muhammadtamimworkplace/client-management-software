@@ -92,7 +92,7 @@ const DetailsCard = ({
                     <strong>Subject:</strong> {loadedClient.Subject || "N/A"}
                 </p>
                 <p>
-                    <strong>Has Business:</strong> {loadedClient.Has_Business ? "Yes" : "No"}
+                    <strong>Has Business:</strong> {loadedClient.Has_Business || "N/A"}
                 </p>
                 {loadedClient.Has_Business && (
                     <p>
