@@ -96,7 +96,7 @@ const DetailsCard = ({
                 </p>
                 {loadedClient.Has_Business && (
                     <p>
-                        <strong>Business Address:</strong> {Business_Address || "N/A"}
+                        <strong>Business Address:</strong> {loadedClient.Business_Address || "N/A"}
                     </p>
                 )}
                 <p>

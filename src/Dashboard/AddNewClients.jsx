@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Swal from 'sweetalert2';
 
 const AddNewClients = () => {
     const [formData, setFormData] = useState({
@@ -76,6 +77,11 @@ const AddNewClients = () => {
                     Phone: "",
                     Email: "",
                     Picture_URL: ""
+                });
+                Swal.fire({
+                    title: "Good job!",
+                    text: "Client Information Save.",
+                    icon: "success"
                 });
             })
             .catch(error => {
