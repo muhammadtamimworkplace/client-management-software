@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import BrokerData from '../Home/BrokerData';
 
-const Hooks = ({ AreaSearch, NameSearch }) => {
+const Hooks = ({ AreaSearch, NameSearch, phoneSearch }) => {
     const [brokers, setBroker] = useState([]);
     const [filterData, setFilterData] = useState([]); // Store filtered data
 
@@ -20,11 +20,13 @@ const Hooks = ({ AreaSearch, NameSearch }) => {
             broker.Name && typeof broker.Name === 'string' && broker.Name.toLowerCase().includes(NameSearch.toLowerCase())
             &&
             broker.Area_Name && typeof broker.Area_Name === 'string' && broker.Area_Name.toLowerCase().includes(AreaSearch.toLowerCase())
+            &&
+            broker.Phone && typeof broker.Phone === 'string' && broker.Phone.toLowerCase().includes(phoneSearch.toLowerCase())
         );
 
         // Update the filterData state with the final filtered data
         setFilterData(filteredCollactions);
-    }, [NameSearch, AreaSearch]);  // Trigger when NameSearch, AreaSearch change
+    }, [NameSearch, AreaSearch, phoneSearch]);  // Trigger when NameSearch, AreaSearch change
 
 
     // console.log(filterData);

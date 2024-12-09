@@ -40,6 +40,7 @@ const Nav = () => {
   // Step 1: Initialize a state variable to hold the search term
   const [AreaSearch, setAreaSearch] = useState("");
   const [NameSearch, setNameSearch] = useState("");
+  const [phoneSearch, setPhoneSearch] = useState("");
 
   // Step 2: Update the state whenever the user types in the input field
   const handleAreaInput = (event) => {
@@ -47,6 +48,9 @@ const Nav = () => {
   };
   const handleNameInput = (event) => {
     setNameSearch(event.target.value);
+  };
+  const handlePhoneInput = (event) => {
+    setPhoneSearch(event.target.value);
   };
 
   return (
@@ -58,6 +62,9 @@ const Nav = () => {
         <div className="flex-none gap-2">
           <div className="form-control">
             <input type="text" value={AreaSearch} onChange={handleAreaInput} placeholder="Search with Area" className="input input-bordered w-24 md:w-auto" />
+          </div>
+          <div className="form-control">
+            <input type="text" value={phoneSearch} onChange={handlePhoneInput} placeholder="Search with Phone" className="input input-bordered w-24 md:w-auto" />
           </div>
           <div className="form-control">
             <input type="text" value={NameSearch} onChange={handleNameInput} placeholder="Search with Name" className="input input-bordered w-24 md:w-auto" />
@@ -89,6 +96,7 @@ const Nav = () => {
           // className='  Content   mx-auto'
           AreaSearch={AreaSearch}
           NameSearch={NameSearch}
+          phoneSearch={phoneSearch}
         ></Hooks>
       }
     </div>
