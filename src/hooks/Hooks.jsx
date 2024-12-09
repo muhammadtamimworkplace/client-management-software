@@ -2,42 +2,40 @@ import { useState, useEffect } from 'react';
 import BrokerData from '../Home/BrokerData';
 
 const Hooks = ({ AreaSearch, NameSearch, phoneSearch }) => {
-    const [brokers, setBroker] = useState([]);
-    const [filterData, setFilterData] = useState([]); // Store filtered data
+    const [filterData, setFilterData] = useState([]);
+    const [loading, setLoading] = useState(true); // Add loading state
 
     useEffect(() => {
-        fetch('http://localhost:5000/clients')
-            .then(res => res.json())
-            .then(data => setBroker(data))
-            .catch(error => console.error("Error fetching data:", error));
-    }, []);
+        const fetchData = async () => {
+            setLoading(true); // Set loading to true when fetching starts
+            try {
+                const res = await fetch('http://localhost:5000/clients');
+                const data = await res.json();
+                setFilterData(data.filter(broker =>
+                    broker.Name?.toLowerCase().includes(NameSearch.toLowerCase()) &&
+                    broker.Area_Name?.toLowerCase().includes(AreaSearch.toLowerCase()) &&
+                    broker.Phone?.toLowerCase().includes(phoneSearch.toLowerCase())
+                ));
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            } finally {
+                setLoading(false); // Set loading to false after data is fetched
+            }
+        };
 
-    useEffect(() => {
-        let filteredCollactions = brokers;
-
-        // Filter by Name if NameSearch is provided
-        filteredCollactions = filteredCollactions.filter(broker =>
-            broker.Name && typeof broker.Name === 'string' && broker.Name.toLowerCase().includes(NameSearch.toLowerCase())
-            &&
-            broker.Area_Name && typeof broker.Area_Name === 'string' && broker.Area_Name.toLowerCase().includes(AreaSearch.toLowerCase())
-            &&
-            broker.Phone && typeof broker.Phone === 'string' && broker.Phone.toLowerCase().includes(phoneSearch.toLowerCase())
-        );
-
-        // Update the filterData state with the final filtered data
-        setFilterData(filteredCollactions);
-    }, [NameSearch, AreaSearch, phoneSearch]);  // Trigger when NameSearch, AreaSearch change
-
-
-    // console.log(filterData);
+        fetchData();
+    }, [NameSearch, AreaSearch, phoneSearch]);
 
     return (
         <div className='w-11/12 mx-auto mt-10 grid md:grid-cols-3 gap-16'>
             {
-                filterData.map(broker => <BrokerData
-                    broker={broker}
-                    key={broker.ID}
-                ></BrokerData>)
+                // loading ? (
+                //      <progress className="progress w-56"></progress> // Replace with your spinner
+                // ) : (
+                filterData.map(broker => (
+                    <BrokerData key={broker.ID} broker={broker} />
+                ))
+                // )
             }
         </div>
     );
