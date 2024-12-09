@@ -21,6 +21,7 @@ const DetailsCard = ({
     NID,
     Birth_Certificate,
     Interested,
+    Reference,
     Phone,
     Email,
 }) => {
@@ -110,6 +111,9 @@ const DetailsCard = ({
                 </p>
                 <p>
                     <strong>Interested In:</strong> {loadedClient.Interested || "N/A"}
+                </p>
+                <p>
+                    <strong>Reference :</strong> {loadedClient.Reference || "N/A"}
                 </p>
                 <p>
                     <strong>Phone:</strong> {loadedClient.Phone || "N/A"}
