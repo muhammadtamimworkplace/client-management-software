@@ -21,6 +21,7 @@ const AddNewClients = () => {
         NID: "",
         Birth_Certificate: "",
         Interested: "",
+        Reference: "",
         Phone: "",
         Email: "",
     });
@@ -74,6 +75,7 @@ const AddNewClients = () => {
                     NID: "",
                     Birth_Certificate: "",
                     Interested: "",
+                    Reference: "",
                     Phone: "",
                     Email: "",
                     Picture_URL: ""
@@ -371,6 +373,22 @@ const AddNewClients = () => {
                         type="text"
                         name="Interested"
                         value={formData.Interested}
+                        onChange={handleChange}
+                        className="input input-bordered w-full"
+                        placeholder="Enter Your Interests"
+                    />
+                </div>
+
+                {/*
+    Reference, */}
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text"> Reference</span>
+                    </label>
+                    <input
+                        type="text"
+                        name="Reference"
+                        value={formData.Reference}
                         onChange={handleChange}
                         className="input input-bordered w-full"
                         placeholder="Enter Your Interests"
