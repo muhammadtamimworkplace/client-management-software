@@ -50,7 +50,7 @@ const router = createBrowserRouter([
   {
     path: '/client/:id', // Catch-all for undefined routes
     element: <PrivateRoute><DetailsClient /></PrivateRoute>,
-    loader: ({ params }) => fetch(`http://localhost:5000/clients/${params.id}`)
+    loader: ({ params }) => fetch(` https://clients-management-backend-b3o88yhyy-muhammad-tamims-projects.vercel.app/clients/${params.id}`)
   },
   {
     path: '*', // Catch-all for undefined routes

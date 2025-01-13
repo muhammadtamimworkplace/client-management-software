@@ -7,9 +7,10 @@ const Hooks = ({ AreaSearch, NameSearch, phoneSearch }) => {
 
     useEffect(() => {
         const fetchData = async () => {
+            // clients
             setLoading(true); // Set loading to true when fetching starts
             try {
-                const res = await fetch('http://localhost:5000/clients');
+                const res = await fetch(' https://clients-management-backend-b3o88yhyy-muhammad-tamims-projects.vercel.app/clients');
                 const data = await res.json();
                 setFilterData(data.filter(broker =>
                     broker.Name?.toLowerCase().includes(NameSearch.toLowerCase()) &&

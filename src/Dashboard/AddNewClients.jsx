@@ -3,7 +3,6 @@ import Swal from 'sweetalert2';
 
 const AddNewClients = () => {
     const [formData, setFormData] = useState({
-        ID: "",
         Name: "",
         Father: "",
         Mother: "",
@@ -39,7 +38,7 @@ const AddNewClients = () => {
         // Handle form submission logic here
         console.log(formData);
 
-        fetch('http://localhost:5000/clients', {
+        fetch(' https://clients-management-backend-b3o88yhyy-muhammad-tamims-projects.vercel.app/clients', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json', // Inform the server about the content type
@@ -57,7 +56,6 @@ const AddNewClients = () => {
 
                 // Reset the form state after submission
                 setFormData({
-                    ID: "",
                     Name: "",
                     Father: "",
                     Mother: "",
@@ -96,7 +94,7 @@ const AddNewClients = () => {
             <h2 className="text-3xl font-bold text-center mb-6">Submit Your Information</h2>
 
             <form onSubmit={handleSubmit} className="space-y-4">
-                {/* ID */}
+                {/* ID
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">ID</span>
@@ -109,7 +107,7 @@ const AddNewClients = () => {
                         className="input input-bordered w-full"
                         placeholder="Enter ID"
                     />
-                </div>
+                </div> */}
 
                 {/* Name */}
                 <div className="form-control">

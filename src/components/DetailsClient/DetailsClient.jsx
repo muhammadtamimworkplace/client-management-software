@@ -3,7 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 
 const DetailsCard = ({
     photoURL,
-    ID,
+    // ID,
     Name,
     Father,
     Mother,
@@ -68,9 +68,7 @@ const DetailsCard = ({
 
             {/* Details Section */}
             <div style={{ padding: "20px", color: "#333" }}>
-                <p>
-                    <strong>ID:</strong> {loadedClient.ID || "N/A"}
-                </p>
+
                 <p>
                     <strong>Father:</strong> {loadedClient.Father || "N/A"}
                 </p>
